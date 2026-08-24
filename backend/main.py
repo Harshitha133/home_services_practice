@@ -47,7 +47,7 @@ def create_booking(booking: BookingCreate, db: Session = Depends(get_db)):
 
 @app.get("/bookings")
 def get_bookings(db: Session = Depends(get_db)):
-    bookings = db.query(models.Booking).all()
+    bookings = db.query(models.Booking).order_by(models.Booking.id).all()
     return bookings
 
 @app.patch("/bookings/{booking_id}")
